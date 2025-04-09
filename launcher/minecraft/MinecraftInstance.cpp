@@ -606,6 +606,7 @@ QProcessEnvironment MinecraftInstance::createLaunchEnvironment()
             // dlsym variant is only needed for OpenGL and not included in the vulkan layer
             appendLib("libMangoHud_dlsym.so");
             appendLib("libMangoHud_opengl.so");
+            appendLib("libMangoHud_shim.so");
             preloadList << mangoHudLibString;
         }
 
@@ -1083,13 +1084,6 @@ shared_qobject_ptr<LaunchTask> MinecraftInstance::createLaunchTask(AuthSessionPt
         process->appendStep(step);
     }
 
-    // run pre-launch command if that's needed
-    if (getPreLaunchCommand().size()) {
-        auto step = makeShared<PreLaunchCommand>(pptr);
-        step->setWorkingDirectory(gameRoot());
-        process->appendStep(step);
-    }
-
     // load meta
     {
         auto mode = session->status != AuthSession::PlayableOffline ? Net::Mode::Online : Net::Mode::Offline;
@@ -1100,6 +1094,13 @@ shared_qobject_ptr<LaunchTask> MinecraftInstance::createLaunchTask(AuthSessionPt
     {
         process->appendStep(makeShared<AutoInstallJava>(pptr));
         process->appendStep(makeShared<CheckJava>(pptr));
+    }
+
+    // run pre-launch command if that's needed
+    if (getPreLaunchCommand().size()) {
+        auto step = makeShared<PreLaunchCommand>(pptr);
+        step->setWorkingDirectory(gameRoot());
+        process->appendStep(step);
     }
 
     // if we aren't in offline mode,.
