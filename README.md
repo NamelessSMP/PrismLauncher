@@ -14,7 +14,7 @@ Requires [Microsoft Visual C++ Redistributable 2022 x64](https://aka.ms/vs/17/re
 
 Requires [Microsoft Visual C++ Redistributable 2022 arm64](https://aka.ms/vs/17/release/vc_redist.arm64.exe)
 
-[![3]](https://github.com/NamelessSMP/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-arm64-Setup-9.4.exe) [![4]](https://github.com/NamelessSMP/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MinGW-w64-arm64-Portable-9.4.zip)
+[![3]](https://github.com/NamelessSMP/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-arm64-Setup-9.4.exe) [![4]](https://github.com/NamelessSMP/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-arm64-Portable-9.4.zip)
 
 ## macOS Download
 
